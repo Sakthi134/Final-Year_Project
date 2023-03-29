@@ -1,105 +1,97 @@
-import React, { useState } from 'react';
-import { ScrollView, TouchableWithoutFeedback, View } from 'react-native';
+import React, {useState} from 'react';
+import {ScrollView, TouchableWithoutFeedback, View} from 'react-native';
 
-import { LAYOUT_HORIZONTAL_PADDING } from '../utils';
+import {LAYOUT_HORIZONTAL_PADDING} from '../utils';
 import Text from '../shared/Text';
-import { tabData } from '../repo/data';
 
-const TopTabs = () => {
-    const [selectedIndex, setSelectedIndex] = useState(0);
-
-    return (
-        <View style={{
-            height: 50,
-            width: '100%',
+const TopTabs = ({tabTitle, selectedIndex, setSelectedIndex, handleScroll}) => {
+  return (
+    <View
+      style={{
+        height: 50,
+        width: '100%',
+      }}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingHorizontal: LAYOUT_HORIZONTAL_PADDING - 20,
         }}>
-            <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{
-                    paddingHorizontal: LAYOUT_HORIZONTAL_PADDING - 20,
-                }}
-            >
-                {tabData.map(({ title }, index) => {
-
-                    return (
-                        <Tab
-                            key={index}
-                            {...{ index }}
-                            {...{ title }}
-                            {...{ selectedIndex }}
-                            {...{ setSelectedIndex }}
-                        />
-                    );
-                })}
-            </ScrollView>
-
-
-        </View>
-    );
+        {tabTitle.map((data, index) => {
+          return (
+            <Tab
+              key={index}
+              index={index}
+              title={data.title}
+              selectedIndex={selectedIndex}
+              setSelectedIndex={setSelectedIndex}
+              handleScroll={handleScroll}
+            />
+          );
+        })}
+      </ScrollView>
+    </View>
+  );
 };
 
+const Tab = ({index, title, selectedIndex, setSelectedIndex, handleScroll}) => {
+  const [layoutW, setLayoutW] = useState(0);
 
-const Tab = ({
-    index,
-    title,
-    selectedIndex,
-    setSelectedIndex
-}) => {
-    const [layoutW, setLayoutW] = useState(0);
+  const isSelected = selectedIndex === index;
 
-    const isSelected = selectedIndex === index;
+  const style = {
+    fontWeight: isSelected ? 'bold' : 'normal',
+  };
 
-    const style = {
-        fontWeight: isSelected ? 'bold' : 'normal',
-    };
-
-    return (
-        <TouchableWithoutFeedback
-            onPress={() => setSelectedIndex(index)}
-        >
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingHorizontal: 10,
-                // marginRight: 1,
+  return (
+    <TouchableWithoutFeedback
+      onPress={() => {
+        handleScroll(index);
+        setSelectedIndex(index);
+      }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingHorizontal: 10,
+          // marginRight: 1,
+        }}
+        // onLayout={(e) => {
+        //     setLayoutW(e.nativeEvent.layout.width);
+        // }}
+      >
+        <View>
+          <Text
+            onLayout={e => {
+              setLayoutW(e.nativeEvent.layout.width);
             }}
-            // onLayout={(e) => {
-            //     setLayoutW(e.nativeEvent.layout.width);
-            // }}
-            >
-                <View>
-                    <Text
-                        onLayout={(e) => {
-                            setLayoutW(e.nativeEvent.layout.width);
-                        }}
-                        style={[
-                            {
-                                color: 'black',
-                                fontSize: 16,
-                            },
-                            style
-                        ]}> {title}</Text >
-                    {
-                        isSelected && (
-                            <View
-                                style={{
-                                    position: 'absolute',
-                                    height: 5,
-                                    width: layoutW,
-                                    bottom: -5,
-                                    left: 0,
-                                    right: 0,
-                                    marginLeft: 2,
-                                    backgroundColor: 'rgba(255, 162, 39, .6)',
-                                }}
-                            />
-                        )
-                    }
-                </View>
-            </View>
-        </TouchableWithoutFeedback>
-    );
+            style={[
+              {
+                color: 'black',
+                fontSize: 16,
+              },
+              style,
+            ]}>
+            {title}
+          </Text>
+          {isSelected && (
+            <View
+              style={{
+                position: 'absolute',
+                height: 5,
+                width: layoutW,
+                bottom: -5,
+                left: 0,
+                right: 0,
+                marginLeft: 2,
+                backgroundColor: 'rgba(255, 162, 39, .6)',
+              }}
+            />
+          )}
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
+  );
 };
 
 export default TopTabs;

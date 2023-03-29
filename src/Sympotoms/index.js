@@ -25,7 +25,7 @@ const Symptoms = () => {
             
 
             <Space size={18} />
-           <ScrollView>
+           <ScrollView showsVerticalScrollIndicator={false}>
 
             {symptomsData.map((post, index) => (
                 <View key={index} style={{

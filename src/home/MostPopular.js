@@ -40,7 +40,13 @@ const renderIconAndText = (imgPath, text) => (
   </View>
 );
 
-const MostPopular = ({navigation}) => {
+const MostPopular = ({
+  navigation,
+  setCauses,
+  setSymptoms,
+  setPrevention,
+  setSpecialist,
+}) => {
   return (
     <View
       style={{
@@ -57,7 +63,9 @@ const MostPopular = ({navigation}) => {
 
       {/* Causes */}
       <Space size={18} />
-      <Pressable onPress={() => navigation.navigate('Causes')}>
+      <Pressable
+        onLayout={event => setCauses(event.nativeEvent.layout)}
+        onPress={() => navigation.navigate('Causes')}>
         <View
           style={{
             height: 222,
@@ -143,7 +151,9 @@ const MostPopular = ({navigation}) => {
 
       {/* Symptoms */}
       <Space size={18} />
-      <Pressable onPress={() => navigation.navigate('Symptoms')}>
+      <Pressable
+        onLayout={event => setSymptoms(event.nativeEvent.layout)}
+        onPress={() => navigation.navigate('Symptoms')}>
         <View
           style={{
             height: 222,
@@ -230,7 +240,9 @@ const MostPopular = ({navigation}) => {
 
       <Space size={18} />
 
-      <Pressable onPress={() => navigation.navigate('Prevention')}>
+      <Pressable
+        onLayout={event => setPrevention(event.nativeEvent.layout)}
+        onPress={() => navigation.navigate('Prevention')}>
         <View
           style={{
             height: 222,
@@ -318,7 +330,9 @@ const MostPopular = ({navigation}) => {
 
       <Space size={18} />
 
-      <Pressable onPress={() => navigation.navigate('Specialist')}>
+      <Pressable
+        onLayout={event => setSpecialist(event.nativeEvent.layout)}
+        onPress={() => navigation.navigate('Specialist')}>
         <View
           style={{
             height: 222,

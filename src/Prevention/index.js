@@ -25,7 +25,7 @@ const Prevention = () => {
             
 
             <Space size={18} />
-           <ScrollView>
+           <ScrollView showsVerticalScrollIndicator={false}>
 
             {preventionData.map((post, index) => (
                 <View key={index} style={{

@@ -25,7 +25,7 @@ const Causes = () => {
             
 
             <Space size={18} />
-           <ScrollView>
+           <ScrollView showsVerticalScrollIndicator={false}>
 
             {causesData.map((post, index) => (
                 <View key={index} style={{

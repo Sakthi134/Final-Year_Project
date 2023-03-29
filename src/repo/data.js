@@ -25,27 +25,22 @@ export const tabData = [
   {
     id: 1,
     title: 'All',
-    position: 100,
   },
   {
     id: 2,
     title: 'Causes',
-    position: 200,
   },
   {
     id: 3,
     title: 'Symptoms',
-    position: 300,
   },
   {
     id: 4,
     title: 'Prevention',
-    position: 400,
   },
   {
     id: 5,
     title: 'Specialist',
-    position: 500,
   },
 ];
 
