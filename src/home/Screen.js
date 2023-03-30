@@ -116,7 +116,7 @@ const Home = ({navigation}) => {
         backgroundColor: '#fff',
       }}>
       <ScaleAnimation>
-        <Header />
+        <Header navigation={navigation}/>
       </ScaleAnimation>
 
       <Animated.ScrollView ref={scrollRef}>

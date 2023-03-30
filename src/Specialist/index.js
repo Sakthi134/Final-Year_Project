@@ -1,5 +1,13 @@
-import {Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
-import React, {useRef, useState} from 'react';
+import {
+  Dimensions,
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import React, {useState} from 'react';
 
 import Space from '../shared/Space';
 import VideoPlayer from 'react-native-video-controls';
@@ -12,6 +20,10 @@ export const gradientColors = [
 ];
 
 const Specialist = ({navigation}) => {
+  const [about, setAbout] = useState(false);
+  const [treatment, setTreatment] = useState(false);
+  const [tremor, setTremor] = useState(false);
+  const [exsersise, setExsersise] = useState(false);
   return (
     <ScrollView>
       <Space size={18} />
@@ -27,12 +39,22 @@ const Specialist = ({navigation}) => {
 
       <Space size={18} />
       <View style={styles.videoContainer}>
-        <VideoPlayer
-          showOnStart={false}
-          onBack={() => navigation.pop()}
-          source={require('./../../assets/Videos/PARKINSON.mp4')}
-          style={styles.backgroundVideo}
-        />
+        {!about && (
+          <Pressable onPress={() => setAbout(true)}>
+            <Image
+              style={{height: 200, width: 200, marginLeft: 80}}
+              source={require('./../../assets/images/921171.png')}></Image>
+          </Pressable>
+        )}
+
+        {about && (
+          <VideoPlayer
+            onBack={() => navigation.pop()}
+            paused={true}
+            source={require('./../../assets/Videos/PARKINSON.mp4')}
+            style={styles.backgroundVideo}
+          />
+        )}
       </View>
       <Space size={18} />
       <Text
@@ -64,13 +86,22 @@ const Specialist = ({navigation}) => {
       <Space size={18} />
 
       <View style={styles.videoContainer}>
-        <VideoPlayer
-          showOnStart={false}
-          onBack={() => navigation.pop()}
-          paused={true}
-          source={require('./../../assets/Videos/videoplayback.mp4')}
-          style={styles.backgroundVideo}
-        />
+        {!treatment && (
+          <Pressable onPress={() => setTreatment(true)}>
+            <Image
+              style={{height: 200, width: 200, marginLeft: 80}}
+              source={require('./../../assets/images/921171.png')}></Image>
+          </Pressable>
+        )}
+
+        {treatment && (
+          <VideoPlayer
+            paused={true}
+            onBack={() => navigation.pop()}
+            source={require('./../../assets/Videos/videoplayback.mp4')}
+            style={styles.backgroundVideo}
+          />
+        )}
       </View>
 
       <Space size={18} />
@@ -105,13 +136,22 @@ const Specialist = ({navigation}) => {
       <Space size={18} />
 
       <View style={styles.videoContainer}>
-        <VideoPlayer
-          showOnStart={false}
-          onBack={() => navigation.pop()}
-          paused={true}
-          source={require('./../../assets/Videos/TremorParkinson.mp4')}
-          style={styles.backgroundVideo}
-        />
+        {!tremor && (
+          <Pressable onPress={() => setTremor(true)}>
+            <Image
+              style={{height: 200, width: 200, marginLeft: 80}}
+              source={require('./../../assets/images/921171.png')}></Image>
+          </Pressable>
+        )}
+
+        {tremor && (
+          <VideoPlayer
+            paused={true}
+            onBack={() => navigation.pop()}
+            source={require('./../../assets/Videos/TremorParkinson.mp4')}
+            style={styles.backgroundVideo}
+          />
+        )}
       </View>
 
       <Space size={18} />
@@ -141,13 +181,22 @@ const Specialist = ({navigation}) => {
       <Space size={18} />
 
       <View style={styles.videoContainer}>
-        <VideoPlayer
-          showOnStart={false}
-          onBack={() => navigation.pop()}
-          paused={true}
-          source={require('./../../assets/Videos/ParkinsonsDiseaseExercisesLegStrength.mp4')}
-          style={styles.backgroundVideo}
-        />
+        {!exsersise && (
+          <Pressable onPress={() => setExsersise(true)}>
+            <Image
+              style={{height: 200, width: 200, marginLeft: 80}}
+              source={require('./../../assets/images/921171.png')}></Image>
+          </Pressable>
+        )}
+
+        {exsersise && (
+          <VideoPlayer
+            paused={true}
+            onBack={() => navigation.pop()}
+            source={require('./../../assets/Videos/ParkinsonsDiseaseExercisesLegStrength.mp4')}
+            style={styles.backgroundVideo}
+          />
+        )}
       </View>
 
       <Space size={18} />
@@ -178,7 +227,7 @@ const styles = StyleSheet.create({
     height: 190,
     width: Dimensions.get('window').width,
 
-    backgroundColor: 'red',
+    //backgroundColor: 'red',
   },
 
   parkinsonVideo: {

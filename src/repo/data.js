@@ -1,7 +1,7 @@
 export const groupSavings = [
   {
     id: 1,
-    img: require('../../assets/images/images.jpeg'),
+    img: require('../../assets/images/parkinson’s-disease.jpg'),
     Decs: ' • Although most people with Parkinson’s first develop the disease after age 60, about 5% to 10% experience onset before the age of 50.',
   },
   {

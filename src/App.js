@@ -9,7 +9,9 @@
 import {SafeAreaView, StatusBar} from 'react-native';
 
 import Causes from './Causes';
+import Details from './Details';
 import Home from './home';
+import Login from './Login';
 import {NavigationContainer} from '@react-navigation/native';
 import Prevention from './Prevention';
 import React from 'react';
@@ -28,10 +30,16 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
             name="Home"
             component={Home}
             options={{headerShown: false}}
           />
+          <Stack.Screen name='Details' component={Details}/>
           <Stack.Screen name="Causes" component={Causes} />
           <Stack.Screen name="Symptoms" component={Symptoms} />
           <Stack.Screen name="Prevention" component={Prevention} />
@@ -40,6 +48,7 @@ const App = () => {
       </NavigationContainer>
     </SafeAreaView>
     // </GestureHandlerRootView>
+    
   );
 };
 

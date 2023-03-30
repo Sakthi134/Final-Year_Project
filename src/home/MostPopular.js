@@ -93,7 +93,7 @@ const MostPopular = ({
                 resizeMode: 'cover',
                 borderRadius: BORDER_RADIUS,
               }}
-              source={require('../../assets/images/parkinson’s-disease.jpg')}
+              source={require('../../assets/images/images.jpeg')}
             />
           </View>
 
