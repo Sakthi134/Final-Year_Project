@@ -20,7 +20,7 @@ const Header = ({navigation}) => (
         alignItems: 'center',
       }}
       >
-      <Pressable onPress={() => navigation.navigate('Details')}>
+      <Pressable onPress={() => navigation.navigate('Profile Details')}>
       <View
         style={{
           height: 50,

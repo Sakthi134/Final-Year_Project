@@ -16,6 +16,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import Prevention from './Prevention';
 import React from 'react';
 import Specialist from './Specialist';
+import Splashs from './Splash';
 import Symptoms from './Sympotoms';
 import {createStackNavigator} from '@react-navigation/stack';
 import {theme} from './theme';
@@ -29,6 +30,11 @@ const App = () => {
       <StatusBar barStyle="dark-content" />
       <NavigationContainer>
         <Stack.Navigator>
+        <Stack.Screen
+          name='Splash'
+          component={Splashs}
+          options={{headerShown: false}}
+        />
           <Stack.Screen
             name="Login"
             component={Login}
@@ -39,7 +45,7 @@ const App = () => {
             component={Home}
             options={{headerShown: false}}
           />
-          <Stack.Screen name='Details' component={Details}/>
+          <Stack.Screen name="Profile Details" component={Details}/>
           <Stack.Screen name="Causes" component={Causes} />
           <Stack.Screen name="Symptoms" component={Symptoms} />
           <Stack.Screen name="Prevention" component={Prevention} />
